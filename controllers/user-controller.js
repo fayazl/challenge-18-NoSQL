@@ -10,17 +10,32 @@ const userController = {
             })
             .select('-__v')
             .sort({_id: -1})
-            .then(dbUserData => {
-                console.log(dbUserData);
-                if(dbUserData){
-                    res.status(404).json({ message: 'No user found with this id'});
-                    return
-                }
-                res.json(dbUserData)
-            })
-            .catch(err => res.json)
-        }
+            .then(dbUserData => res.json(dbUserData))
+            .catch(err => {
+                console.log(err);
+                res.sendStatus(400);
+            });
+        },
 
-}
+        getUsersById({params}, res){
+            User.findOne({ _id: params.id})
+                .populate({
+                    path: 'thoughts',
+                    select: '__v'
+                })
+                .select('-__v')
+                .then(dbUserData => res.json(dbUserData))
+                .catch(err => {
+                    console.log(err);
+                    res.sendStatus(400)
+                });
+        },
+
+        createUsers({body}, res){
+            User.create(body)
+             .then(dbUserData => res.json(dbUserData))
+             .catch(err => res.json(err));
+        }
+    }
 
 module.exports = userController;
