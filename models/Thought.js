@@ -1,4 +1,22 @@
-const User = require('./User');
-const Thought = require('./Thought');
+const { Schema, model } = require ('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
-module.exports = { User, Thought };
+const ThoughtSchema = newSchema (
+
+    {
+        thoughtText:{
+            type: String,
+            require: true,
+            trim: true,
+            maxlength: 280
+        },
+
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: createdAtVal => dateFormat(createdAtVal)
+        }
+
+
+    }
+)
