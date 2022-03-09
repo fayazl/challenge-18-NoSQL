@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 const {
     getAllUsers,
-  } = require('../../controllers/pizza-controller');
+  } = require('../../controllers/user-controller');
 
 router
   .route('/')
