@@ -41,9 +41,20 @@ const thoughtController = {
                 res.json(dbThoughtData);
               })
               .catch(err => res.json(err));
-    }
+    },
 
-    updateThoughts ()
+    updateThoughts({params, body}, res){
+        Thought.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
+        .then(dbThoughtData => {
+            if (!dbThoughtData) {
+              res.status(404).json({ message: 'No thoughts found with this id' });
+              return;
+            }
+            res.json(dbThoughtData);
+          })
+          .catch(err => res.json(err));
+    },
+
 }
 
 module.exports = thoughtController;
