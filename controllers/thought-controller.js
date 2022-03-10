@@ -20,5 +20,26 @@ const thoughtController = {
             console.log(err);
             res.sendStatus(400)
         });
+    },
+
+    createThoughts({params, body}, res){
+        console.log(params)
+        Thought.create(body)
+            .then(({_id}) => {
+                return User.findOneAndUpdate(
+                    {_id: params.userId},
+                    { $push: {thoughts: _id} },
+                    { new: true }
+                )
+            })
+            .then(dbThoughtData => {
+                console.log(dbThoughtData);
+                if (!dbThoughtData) {
+                  res.status(404).json({ message: 'No thought found with this id!' });
+                  return;
+                }
+                res.json(dbThoughtData);
+              })
+              .catch(err => res.json(err));
     }
 }
