@@ -7,7 +7,6 @@ const {
   } = require('../../controllers/thought-controller');
 
 
-
 router
     .route('/')
     .get(getAllThoughts)
@@ -15,4 +14,6 @@ router
 
 router
     .route('/:id')
-    .get(getThoughtById)    
+    .get(getThoughtsById)    
+
+module.exports = router;
