@@ -56,7 +56,7 @@ const userController = {
           },
 
         createFriends({ params }, res) {
-            Friend.findOneAndUpdate(
+            User.findOneAndUpdate(
                 {_id: params.userId },
                 { $push: {friends: params.friendId }},
                 {new: true, runValidators: true}
@@ -72,7 +72,7 @@ const userController = {
         },
 
         deleteFriends({ params }, res){
-            Friend.findOneAndUpdate(
+            User.findOneAndUpdate(
                 {_id: params.userId },
                 { $pull: { friends: params.friendId } },
                 { new: true }
