@@ -10,7 +10,10 @@
 
 ### This challenge we are introduced to different methods and commands to activate and manipualte the database
 
+Github Repo: https://github.com/fayazl/challenge-18-NoSQL
+Walkthrough Video: https://drive.google.com/file/d/1IL0cGeb1e2yusB7J1eZrY6ix_B7m6S_y/view
+
+*Note: Please use download video option for best quality. Link has reduced quality.
+
 <img src= "./Nosql-challenge.png">
 
-Github Repo: https://github.com/fayazl/challenge-18-NoSQL
-Heroku Link
